@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f6fbfa;
+        }
+        .menu-container {
+            max-width: 800px;
+            margin: 60px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 3px 2px 40px 16px rgba(18, 12, 12, 0.782);
+        }
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #d9534f;
+            margin-bottom: 20px;
+        }
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+            background-color: #f1f1f1;
+            color: #343a40;
+            font-weight: bold;
+            border: 1px solid #ddd;
+            border-bottom: none;
+        }
+        .tab:hover {
+            background-color: #ddd;
+        }
+        .active {
+            background-color: #ffffff;
+            border-bottom: 2px solid #d9534f;
+        }
+        .menu-content {
+            display: none;
+        }
+        .menu-content.active {
+            display: block;
+        }
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        .dish-name {
+            width: 200px;
+            font-weight: bold;
+        }
+        .price {
+            width: 80px;
+            text-align: right;
+        }
+        select, button {
+            margin-left: 10px;
+        }
+        .addtocart {
+            background-color: #24e855;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .cart {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        .cart h2 {
+            text-align: center;
+        }
+        .cart ul {
+            list-style: none;
+            padding: 0;
+        }
+        .cart li {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .cart li:last-child {
+            border-bottom: none;
+        }
+        .cart button {
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="menu-container">
+    <h1>Restaurant Menu</h1>
+    <div class="tabs">
+        <div class="tab active" onclick="showTab('indian')">Indian</div>
+        <div class="tab" onclick="showTab('italian')">Italian</div>
+        <div class="tab" onclick="showTab('chinese')">Chinese</div>
+    </div>
+
+    <div id="indian" class="menu-content active">
+        <h2>Indian Dishes</h2>
+        <div class="menu-item">
+            <span class="dish-name">Butter Chicken</span>
+            <span class="price">₹450</span>
+            <select id="quantity-Butter Chicken">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <button class="addtocart" onclick="addToCart('Butter Chicken', 450)">Add to Cart</button>
+        </div>
+        <!-- Add more menu items here -->
+    </div>
+
+    <div id="italian" class="menu-content">
+        <h2>Italian Dishes</h2>
+        <div class="menu-item">
+            <span class="dish-name">Margherita Pizza</span>
+            <span class="price">₹500</span>
+            <select id="quantity-Margherita Pizza">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <button class="addtocart" onclick="addToCart('Margherita Pizza', 500)">Add to Cart</button>
+        </div>
+        <!-- Add more menu items here -->
+    </div>
+
+    <div id="chinese" class="menu-content">
+        <h2>Chinese Dishes</h2>
+        <div class="menu-item">
+            <span class="dish-name">Sweet and Sour Chicken</span>
+            <span class="price">₹450</span>
+            <select id="quantity-Sweet and Sour Chicken">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <button class="addtocart" onclick="addToCart('Sweet and Sour Chicken', 450)">Add to Cart</button>
+        </div>
+        <!-- Add more menu items here -->
+    </div>
+
+    <div class="cart">
+        <h2>Your Cart</h2>
+        <ul id="cart-items"></ul>
+        <p>Total: ₹<span id="total-price">0</span></p>
+        <div class="arrange ordered">
+            <a href="#">Order Now</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showTab(tabId) {
+        document.querySelectorAll('.menu-content').forEach(function(content) {
+            content.classList.remove('active');
+        });
+        document.querySelectorAll('.tab').forEach(function(tab) {
+            tab.classList.remove('active');
+        });
+        document.getElementById(tabId).classList.add('active');
+        document.querySelector(`[onclick="showTab('${tabId}')"]`).classList.add('active');
+    }
+
+    // Initialize an empty array for cart items
+let cart = [];
+
+// Function to add an item to the cart
+function addToCart(dishName, price) {
+    // Get the quantity of the selected dish
+    const quantity = parseInt(document.getElementById(`quantity-${dishName}`).value);
+
+    // Check if the item already exists in the cart
+    const existingItemIndex = cart.findIndex(item => item.name === dishName);
+
+    if (existingItemIndex !== -1) {
+        // If the item exists, update the quantity
+        cart[existingItemIndex].quantity += quantity;
+    } else {
+        // If the item doesn't exist, add it to the cart
+        cart.push({ name: dishName, price: price, quantity: quantity });
+    }
+
+    // Update the cart display
+    updateCart();
+}
+
+// Function to remove an item from the cart
+function removeFromCart(dishName) {
+    const itemIndex = cart.findIndex(item => item.name === dishName);
+    
+    if (itemIndex !== -1) {
+        if (cart[itemIndex].quantity > 1) {
+            // If more than one item, decrease quantity
+            cart[itemIndex].quantity -= 1;
+        } else {
+            // If only one item, remove it entirely
+            cart.splice(itemIndex, 1);
+        }
+    }
+    
+    // Update the cart display
+    updateCart();
+}
+
+// Function to update the cart display
+function updateCart() {
+    const cartItemsContainer = document.getElementById('cart-items');
+    const cartTotalElement = document.getElementById('total-price');
+
+    
+    // Clear the cart items display
+    cartItemsContainer.innerHTML = '';
+
+    // Initialize total price
+    let total = 0;
+
+    // Loop through the cart items to create the display
+    cart.forEach(item => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `
+            <span>${item.name} (${item.quantity})</span>
+            <span>₹${item.price * item.quantity}</span>
+            <button onclick="removeFromCart('${item.name}')">Remove</button>
+        `;
+        cartItemsContainer.appendChild(listItem);
+        
+        // Update the total price
+        total += item.price * item.quantity;
+    });
+
+    // Update the total display
+    cartTotalElement.innerText = total.toFixed(2);
+}
+
+</script>
+
+</body>
+</html>

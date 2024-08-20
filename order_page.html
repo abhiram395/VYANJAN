@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Food</title>
+    <link href="style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="icon" href="bb10e8a825ede73800be02dccd9391a369653cc6[1].jpg" type="image/png">
+    <style>
+        body {
+            background-color: #9eef99;
+        }
+        .order-container {
+            max-width: 1000px;
+            margin: 100px auto;
+            background-color: #b7eede;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #f32c25;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            position: relative;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #343a40;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .form-group textarea {
+            resize: vertical;
+        }
+        .form-group button {
+            background-color: #d9534f;
+            color: #ffffff;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 20px 0px;
+            width: 100%;
+        }
+        .form-group button:hover {
+            background-color: #c9302c;
+        }
+        .error-message {
+            color: red;
+            font-size: 14px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <div class="logo">
+                <img src="WhatsApp Image 2024-08-13 at 20.09.19_db2c1996.jpg" class="logon" alt="Logo">
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="website.html">HOME</a></li>
+                    <li class="nav-item"><a class="nav-link" id="ordering" href="menu.html" target="_blank">MENU</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://maps.app.goo.gl/k5YtQRh5hoaJC4QN6" target="_blank">LOCATION</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">VARIETY</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">INDIAN</a></li>
+                            <li><a class="dropdown-item" href="#">CHINESE</a></li>
+                            <li><a class="dropdown-item" href="#">ITALIAN</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="search d-flex">
+                    <i class="fa-brands fa-facebook-f mx-2"></i>
+                    <i class="fa-brands fa-twitter mx-2"></i>
+                    <i class="fa-brands fa-instagram mx-2"></i>
+                    <i class="fa-brands fa-snapchat mx-2"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="order-container">
+        <h1>Payment Details</h1>
+        <form id="form-groups">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="e.g., John Doe" required>
+                <span class="error-message" id="name-error">Please enter your name.</span>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="e.g., 9182736450" required>
+                <span class="error-message" id="phone-error">Please enter a valid phone number.</span>
+            </div>
+            <div class="form-group">
+                <label for="address">Delivery Address</label>
+                <textarea id="address" name="address" rows="4" placeholder="e.g., 1234 Elm St." required></textarea>
+                <span class="error-message" id="address-error">Please enter your address.</span>
+            </div>
+            <div class="form-group">
+                <label for="payment-method">Payment Method</label>
+                <select id="payment-method" name="payment-method" required>
+                    <option value="select">Select</option>
+                    <option value="cash-on-delivery">Cash on Delivery</option>
+                    <option value="upi">UPI</option>
+                </select>
+                <span class="error-message" id="payment-method-error">Please select a payment method.</span>
+            </div>
+            <div class="form-group" id="upi-container" style="display: none;">
+                <label for="upi">UPI ID</label>
+                <input type="text" id="upi" name="upi" placeholder="e.g., 9182@paytm">
+                <span class="error-message" id="upi-error">Please enter your UPI ID.</span>
+            </div>
+            <div class="form-group">
+                <button type="submit">Place Order</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        function hideErrorOnInput(inputId, errorId) {
+            const inputElement = document.getElementById(inputId);
+            const errorElement = document.getElementById(errorId);
+            inputElement.addEventListener('input', function () {
+                errorElement.style.display = 'none';
+            });
+        }
+        hideErrorOnInput('name', 'name-error');
+        hideErrorOnInput('phone', 'phone-error');
+        hideErrorOnInput('address', 'address-error');
+        hideErrorOnInput('upi', 'upi-error');
+        document.getElementById('payment-method').addEventListener('change', function () {
+            const upiContainer = document.getElementById('upi-container');
+            if (this.value === 'upi') {
+                upiContainer.style.display = 'block';
+            } else {
+                upiContainer.style.display = 'none';
+            }
+            document.getElementById('payment-method-error').style.display = 'none';
+        });
+        document.getElementById("form-groups").addEventListener('submit', function (event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const address = document.getElementById('address').value.trim();
+            const paymentMethod = document.getElementById('payment-method').value;
+            const upi = document.getElementById('upi').value.trim();
+            let valid = true;
+            if (!name) {
+                document.getElementById('name-error').style.display = 'block';
+                valid = false;
+            } else {
+                document.getElementById('name-error').style.display = 'none';
+            }
+            if (!validatePhone(phone)) {
+                document.getElementById('phone-error').style.display = 'block';
+                valid = false;
+            } else {
+                document.getElementById('phone-error').style.display = 'none';
+            }
+            if (!address) {
+                document.getElementById('address-error').style.display = 'block';
+                valid = false;
+            } else {
+                document.getElementById('address-error').style.display = 'none';
+            }
+            if (paymentMethod === 'select') {
+                document.getElementById('payment-method-error').style.display = 'block';
+                valid = false;
+            } else {
+                document.getElementById('payment-method-error').style.display = 'none';
+            }
+            if (paymentMethod === 'upi') {
+                if (!validateUpi(upi)) {
+                    document.getElementById('upi-error').style.display = 'block';
+                    valid = false;
+                } else {
+                    document.getElementById('upi-error').style.display = 'none';
+                }
+            }
+            if (valid) {
+                alert("Your order has been placed!");
+                document.getElementById("form-groups").reset();
+                window.location.href = "website.html";
+            }
+        });
+        function validatePhone(phone) {
+            const re = /^\d{10}$/;
+            return re.test(phone);
+        }
+        function validateUpi(upi) {
+            const re = /^[a-zA-Z0-9.\-_]{2,}@[a-zA-Z]{3,}$/;
+            return re.test(upi);
+        }
+    </script>
+</body>
+</html>

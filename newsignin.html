@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VYANJAN</title>
+    <link href="style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        .navbar {
+            background-color: #f8f9fa;
+        }
+        .toggle-btn {
+            cursor: pointer;
+            font-weight: bold;
+            font-size: large;
+            color: red;
+        }
+        .signin-panel {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 100%;
+            background: white;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+            padding: 20px;
+            box-sizing: border-box;
+            z-index: 999;
+        }
+        .signin-panel.open {
+            transform: translateX(0);
+        }
+        .signin-panel .close-btn {
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+            float: right;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .social-icons i {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .modal-open {
+            overflow: hidden;
+        }
+        .signin-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .signin-footer a {
+            color: red;
+            text-decoration: none;
+        }
+        .signin-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <div class="logo">
+                <img src="WhatsApp Image 2024-08-13 at 20.09.19_db2c1996.jpg" class="logon">
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- Other nav items -->
+                    <li class="nav-item">
+                        <a class="nav-link" id="toggleSignInBtn" style="font-weight: 700; cursor: pointer;">SIGN IN</a>
+                    </li>
+                </ul>
+                <div class="search">
+                    <!-- Social media icons -->
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-snapchat"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign-in panel -->
+    <div class="signin-panel" id="signinPanel">
+        <span class="close-btn" id="closeSignIn">&times;</span>
+        <h1 id="signinHeader">Sign In</h1>
+        <div id="errorMessage"></div>
+        <div id="signInForm">
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username">
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password">
+            </div>
+            <button id="signInButton">Sign In</button>
+        </div>
+        <div class="signin-footer">
+            <p>Don't have an account? <a href="#" id="createAccountBtn">Create one</a></p>
+        </div>
+        <div id="createAccountForm" style="display: none;">
+            <h1>Create an Account</h1>
+            <div class="input-group">
+                <label for="newUsername">Username</label>
+                <input type="text" id="newUsername">
+            </div>
+            <div class="input-group">
+                <label for="newPassword">Password</label>
+                <input type="password" id="newPassword">
+            </div>
+            <div class="input-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword">
+            </div>
+            <button id="createAccountButton">Create Account</button>
+            <div class="signin-footer">
+                <p>Already have an account? <a href="#" id="backToSignInBtn">Sign In</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const signInPanel = document.getElementById('signinPanel');
+            const toggleSignInBtn = document.getElementById('toggleSignInBtn');
+            const closeSignInBtn = document.getElementById('closeSignIn');
+            const errorMessage = document.getElementById('errorMessage');
+            const signInForm = document.getElementById('signInForm');
+            const createAccountForm = document.getElementById('createAccountForm');
+            const createAccountBtn = document.getElementById('createAccountBtn');
+            const backToSignInBtn = document.getElementById('backToSignInBtn');
+
+            toggleSignInBtn.addEventListener('click', function () {
+                signInPanel.classList.toggle('open');
+                document.body.classList.toggle('modal-open');
+            });
+
+            closeSignInBtn.addEventListener('click', function () {
+                signInPanel.classList.remove('open');
+                document.body.classList.remove('modal-open');
+            });
+
+            document.addEventListener('click', function (event) {
+                if (!signInPanel.contains(event.target) && !toggleSignInBtn.contains(event.target)) {
+                    signInPanel.classList.remove('open');
+                    document.body.classList.remove('modal-open');
+                }
+            });
+
+            document.getElementById('signInButton').addEventListener('click', function () {
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+
+                if (username === '' || password === '') {
+                    errorMessage.textContent = 'Please enter both username and password';
+                } else {
+                    errorMessage.textContent = ''; // Clear any previous error messages
+                    // Here you would typically handle sign-in logic
+                    console.log('Username:', username);
+                    console.log('Password:', password);
+                }
+            });
+
+            createAccountBtn.addEventListener('click', function () {
+                signInForm.style.display = 'none';
+                createAccountForm.style.display = 'block';
+            });
+
+            backToSignInBtn.addEventListener('click', function () {
+                createAccountForm.style.display = 'none';
+                signInForm.style.display = 'block';
+            });
+
+            document.getElementById('createAccountButton').addEventListener('click', function () {
+                const newUsername = document.getElementById('newUsername').value;
+                const newPassword = document.getElementById('newPassword').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+
+                if (newUsername === '' || newPassword === '' || confirmPassword === '') {
+                    errorMessage.textContent = 'Please fill out all fields';
+                } else if (newPassword !== confirmPassword) {
+                    errorMessage.textContent = 'Passwords do not match';
+                } else {
+                    errorMessage.textContent = ''; // Clear any previous error messages
+                    // Here you would typically handle account creation logic
+                    console.log('New Username:', newUsername);
+                    console.log('New Password:', newPassword);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

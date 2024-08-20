@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            background: white;
+            padding: 2em;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        h1 {
+            margin-bottom: 1em;
+            font-size: 24px;
+        }
+
+        .input-group {
+            margin-bottom: 1em;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5em;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.8em;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 0.8em;
+            background-color: #ff5722;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #e64a19;
+        }
+
+        #errorMessage {
+            color: red;
+            font-size: 14px;
+            margin-top: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="signInForm">
+            <h1>Sign In</h1>
+            <div class="input-group">
+                <label for="username">Email/Phone</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Sign In</button>
+            <p id="errorMessage"></p>
+        </form>
+    </div>
+    <script>
+        document.getElementById('signInForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+
+            // Reset error message
+            errorMessage.textContent = '';
+
+            // Basic validation for empty fields
+            if (username === '' || password === '') {
+                errorMessage.textContent = 'Please fill in all fields.';
+                return;
+            }
+
+            // Phone number validation (simple example)
+            const phonePattern = /^\d{10}$/; // Example pattern for 10-digit numbers
+            if (!phonePattern.test(username)) {
+                errorMessage.textContent = 'Please enter a valid 10-digit phone number.';
+                return;
+            }
+
+            // Strong password validation
+            const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            if (!passwordPattern.test(password)) {
+                errorMessage.textContent = 'Password must be at least 8 characters long, include an uppercase letter, a lowercase letter, a number, and a special character.';
+                return;
+            }
+
+            // If all validation passes, you can submit the form data
+            alert('Sign In Successful!'); // Replace this with actual sign-in logic
+        });
+    </script>
+</body>
+</html>

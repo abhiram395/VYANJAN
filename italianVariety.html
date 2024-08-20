@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Italian Dishes</title>
+    <link href="style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="icon" href="bb10e8a825ede73800be02dccd9391a369653cc6[1].jpg" type="image/png">
+    <style>
+        body{
+            background-color: rgb(79, 254, 184);
+        }
+        .container {
+            width: 90%;
+            margin: 70px auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            padding: 10px 0px;
+            margin-bottom: 30px;
+            box-shadow: 1px 1px 20px 10px whitesmoke;
+        }
+        .dish {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .dish-item {
+            flex: 1 1 calc(33.333% - 40px);
+            box-sizing: border-box;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .dish-item img {
+            width: 100%;
+            height: 300px;
+            display: block;
+        }
+        .dish-item h2 {
+            margin: 0;
+            padding: 10px;
+            text-align: center;
+            background-color: #e94e77;
+            color: #fff;
+        }
+        .dish-item p {
+            padding: 0 10px 10px;
+            text-align: center;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <div class="logo">
+                <img src="WhatsApp Image 2024-08-13 at 20.09.19_db2c1996.jpg" class="logon">
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="menu.html" target="_blank"><i>MENU</i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="ordering" style="cursor: pointer;"><i>REVIEWS</i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://maps.app.goo.gl/k5YtQRh5hoaJC4QN6"
+                            target="_blank"><i>LOCATION</i></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <button class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <i>VARIETY</i>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">INDIAN</a></li>
+                            <li><a class="dropdown-item" href="#">CHINESE</a></li>
+                            <li><a class="dropdown-item" href="#">ITALIAN</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="search">
+                    <i style="cursor: pointer;" class="fa-brands fa-facebook-f"></i>
+                    <i style="cursor: pointer;" class="fa-brands fa-twitter"></i>
+                    <i style="cursor: pointer;" class="fa-brands fa-instagram"></i>
+                    <i style="cursor: pointer;" class="fa-brands fa-snapchat"></i>
+                    <a href="#" style="font-weight: 700; font-size: small; cursor: pointer; text-decoration: none; "
+                        id="toggleSignIn"><svg class="_1GTCc" viewBox="6 0 12 24" height="19" width="18" fill="#686b78">
+                            <path
+                                d="M11.9923172,11.2463768 C8.81761115,11.2463768 6.24400341,8.72878961 6.24400341,5.62318841 C6.24400341,2.5175872 8.81761115,0 11.9923172,0 C15.1670232,0 17.740631,2.5175872 17.740631,5.62318841 C17.740631,8.72878961 15.1670232,11.2463768 11.9923172,11.2463768 Z M11.9923172,9.27536232 C14.0542397,9.27536232 15.7257581,7.64022836 15.7257581,5.62318841 C15.7257581,3.60614845 14.0542397,1.97101449 11.9923172,1.97101449 C9.93039471,1.97101449 8.25887628,3.60614845 8.25887628,5.62318841 C8.25887628,7.64022836 9.93039471,9.27536232 11.9923172,9.27536232 Z M24,24 L0,24 L1.21786143,19.7101449 L2.38352552,15.6939891 C2.85911209,14.0398226 4.59284263,12.7536232 6.3530098,12.7536232 L17.6316246,12.7536232 C19.3874139,12.7536232 21.1256928,14.0404157 21.6011089,15.6939891 L22.9903494,20.5259906 C23.0204168,20.63057 23.0450458,20.7352884 23.0641579,20.8398867 L24,24 Z M21.1127477,21.3339312 L21.0851024,21.2122487 C21.0772161,21.1630075 21.0658093,21.1120821 21.0507301,21.0596341 L19.6614896,16.2276325 C19.4305871,15.4245164 18.4851476,14.7246377 17.6316246,14.7246377 L6.3530098,14.7246377 C5.4959645,14.7246377 4.55444948,15.4231177 4.32314478,16.2276325 L2.75521062,21.6811594 L2.65068631,22.0289855 L21.3185825,22.0289855 L21.1127477,21.3339312 Z">
+                            </path>
+                        </svg>SIGN IN</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Delicious Italian Dishes</h1>
+        <div class="dish">
+            <div class="dish-item">
+                <img src="pizza.jpeg" alt="Margherita Pizza">
+                <h2>Margherita Pizza</h2>
+                <p>A classic pizza topped with tomatoes, mozzarella, and fresh basil.</p>
+            </div>
+            <div class="dish-item">
+                <img src="Lasagna.jpg" alt="Lasagna">
+                <h2>Lasagna</h2>
+                <p>Layers of pasta with rich meat sauce, béchamel, and cheese.</p>
+            </div>
+            <div class="dish-item">
+                <img src="Carbonara.jpg" alt="Carbonara">
+                <h2>Carbonara</h2>
+                <p>Pasta tossed in a creamy sauce with pancetta, eggs, and cheese.</p>
+            </div>
+            <div class="dish-item">
+                <img src="Caprese Salad.jpeg" alt="Caprese Salad">
+                <h2>Caprese Salad</h2>
+                <p>Fresh tomatoes, mozzarella, and basil drizzled with olive oil and balsamic vinegar.</p>
+            </div>
+            <div class="dish-item">
+                <img src="Ravioli.jpg" alt="Ravioli">
+                <h2>Ravioli</h2>
+                <p>Stuffed pasta pockets with various fillings, served with sauce.</p>
+            </div>
+            <div class="dish-item">
+                <img src="Fettuccine_Alfredo.jpg" alt="Fettuccine Alfredo">
+                <h2>Fettuccine Alfredo</h2>
+                <p>Creamy pasta made with butter, cream, and Parmesan cheese.</p>
+            </div>
+            <div class="dish-item">
+                <img src="Bruschetta.webp" alt="Bruschetta">
+                <h2>Bruschetta</h2>
+                <p>Toasted bread topped with a mixture of tomatoes, garlic, and basil.</p>
+            </div>
+            <div class="dish-item">
+                <img src="gnocchijpg.jpg" alt="Gnocchi">
+                <h2>Gnocchi</h2>
+                <p>Soft potato dumplings served with various sauces.</p>
+            </div>
+            <div class="dish-item">
+                <img src="Osso-Buco.jpg" alt="Osso Buco">
+                <h2>Osso Buco</h2>
+                <p>Braised veal shanks cooked with vegetables, white wine, and broth.</p>
+            </div>
+            <div class="dish-item">
+                <img src="Tiramisu.jpg" alt="Tiramisu">
+                <h2>Tiramisu</h2>
+                <p>A classic Italian dessert with layers of coffee-soaked ladyfingers and mascarpone cream.</p>
+            </div>
+            <div class="dish-item">
+                <img src="Panettone.jpg" alt="Panettone">
+                <h2>Panettone</h2>
+                <p>A sweet bread loaf traditionally enjoyed during the holiday season, filled with dried fruit and nuts.</p>
+            </div>
+            <div class="dish-item">
+                <img src="Marinara Sauce.webp" alt="Marinara Sauce">
+                <h2>Marinara Sauce</h2>
+                <p>A classic tomato sauce with garlic, onions, and herbs, perfect for pasta dishes.</p>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>

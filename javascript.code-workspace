@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"path": "../javascript"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "website"
+	},
+	"extensions": {
+		"recommendations": [
+			"christian2.autosave"
+		]
+	}
+}
