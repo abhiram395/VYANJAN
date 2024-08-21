@@ -34,6 +34,9 @@ body {
     stroke-width: 0;
     margin-right: 7px;
 }
+a{
+    font-style: italic;
+}
 
 .search a:hover{
     color: rgb(237, 35, 248);
