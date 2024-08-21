@@ -18,9 +18,12 @@ body {
     position: absolute;
     right: 1px;
 }
-.search i {
-    padding: 7px 23px;
-    margin: 0px 8px;
+.search lord-icon{
+    margin: auto;
+    top: 0;
+    border: 0px;
+    position: relative;
+    padding: 5px;
 }
 .search a{
     margin-right: 8px;
@@ -42,11 +45,7 @@ a{
     color: rgb(237, 35, 248);
     border: 1.5mm ridge rgba(243, 255, 5, 0.812);
 }
-.search i:hover{
-    color: rgb(237, 35, 248);
-    background-color: rgba(243, 255, 5, 0.812);
-    border: 1.5mm ridge rgba(243, 255, 5, 0.812);
-}
+
 .logon {
     height: 81px;
     cursor: pointer;

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,11 +13,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
     <link rel="icon" href="bb10e8a825ede73800be02dccd9391a369653cc6[1].jpg" type="image/png">
     <style>
         body {
             background-color: #9eef99;
         }
+
         .order-container {
             max-width: 1000px;
             margin: 100px auto;
@@ -25,31 +28,39 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
         h1 {
             text-align: center;
             color: #f32c25;
             margin-bottom: 30px;
             font-weight: 700;
         }
+
         .form-group {
             margin-bottom: 15px;
             position: relative;
         }
+
         .form-group label {
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
             color: #343a40;
         }
-        .form-group input, .form-group select, .form-group textarea {
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
             width: 100%;
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 4px;
         }
+
         .form-group textarea {
             resize: vertical;
         }
+
         .form-group button {
             background-color: #d9534f;
             color: #ffffff;
@@ -61,9 +72,11 @@
             margin: 20px 0px;
             width: 100%;
         }
+
         .form-group button:hover {
             background-color: #c9302c;
         }
+
         .error-message {
             color: red;
             font-size: 14px;
@@ -71,34 +84,53 @@
         }
     </style>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <div class="logo">
                 <img src="WhatsApp Image 2024-08-13 at 20.09.19_db2c1996.jpg" class="logon" alt="Logo">
             </div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="website.html">HOME</a></li>
-                    <li class="nav-item"><a class="nav-link" id="ordering" href="menu.html" target="_blank">MENU</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://maps.app.goo.gl/k5YtQRh5hoaJC4QN6" target="_blank">LOCATION</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="website.html">HOME</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" id="ordering" href="menu.html" target="_blank">MENU</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="https://maps.app.goo.gl/k5YtQRh5hoaJC4QN6"
+                            target="_blank">LOCATION</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">VARIETY</a>
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">VARIETY</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">INDIAN</a></li>
-                            <li><a class="dropdown-item" href="#">CHINESE</a></li>
-                            <li><a class="dropdown-item" href="#">ITALIAN</a></li>
+                            <li><a class="dropdown-item" href="indianVariety.html">INDIAN</a></li>
+                            <li><a class="dropdown-item" href="italianVariety.html">ITALIAN</a></li>
+                            <li><a class="dropdown-item" href="chineseVariety.html">CHINESE</a></li>
                         </ul>
                     </li>
                 </ul>
                 <div class="search d-flex">
-                    <i class="fa-brands fa-facebook-f mx-2"></i>
-                    <i class="fa-brands fa-twitter mx-2"></i>
-                    <i class="fa-brands fa-instagram mx-2"></i>
-                    <i class="fa-brands fa-snapchat mx-2"></i>
+                    <lord-icon src="https://cdn.lordicon.com/mpigogwa.json" trigger="morph" stroke="light"
+                        state="morph-circle" colors="primary:#ffffff,secondary:#b4b4b4,tertiary:#3080e8"
+                        style="width:50px;height:50px">
+                    </lord-icon>
+                    <lord-icon src="https://cdn.lordicon.com/ramibnzh.json" trigger="morph" state="morph-circle"
+                        colors="primary:#0a2e5c,secondary:#b4b4b4" style="width:50px;height:50px">
+                    </lord-icon>
+                    <lord-icon src="https://cdn.lordicon.com/frnztegr.json" trigger="morph" stroke="light"
+                        state="morph-circle"
+                        colors="primary:#ffffff,secondary:#b4b4b4,tertiary:#ee6d66,quaternary:#c7166f,quinary:#e86830,senary:#66a1ee"
+                        style="width:50px;height:50px">
+                    </lord-icon>
+                    <lord-icon src="https://cdn.lordicon.com/ollaenhr.json" trigger="morph" stroke="light"
+                        state="morph-cirlce" colors="primary:#ffffff,secondary:#e8e230,tertiary:#b4b4b4"
+                        style="width:50px;height:50px">
+                    </lord-icon>
                 </div>
             </div>
         </div>
@@ -217,4 +249,5 @@
         }
     </script>
 </body>
+
 </html>
