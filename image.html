@@ -3,12 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website with Favicon</title>
-    
-    <link rel="icon" href="mascot-logo-design_P1_900x420.jpeg" type="image/png"> 
-    
+    <title>Order Summary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 20px;
+        }
+        .summary {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .summary h2 {
+            margin-top: 0;
+        }
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+        .total {
+            font-weight: bold;
+            padding: 10px 0;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0069d9;
+        }
+    </style>
 </head>
 <body>
+    <div class="summary">
+        <h2>Order Summary</h2>
+        <div id="order-summary"></div>
+        <div class="total">
+            Total: $<span id="total-amount">0</span>
+        </div>
+        <button onclick="clearOrder()">Clear Order</button>
+    </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const orderSummary = document.getElementById('order-summary');
+            const totalAmount = document.getElementById('total-amount');
+            const order = JSON.parse(localStorage.getItem('order')) || [];
+
+            let total = 0;
+            order.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'summary-item';
+                itemDiv.innerHTML = `<span>${item.name}</span><span>$${item.price}</span>`;
+                orderSummary.appendChild(itemDiv);
+                total += item.price;
+            });
+
+            totalAmount.innerText = total.toFixed(2);
+        });
+
+        function clearOrder() {
+            localStorage.removeItem('order');
+            alert('Order cleared!');
+            window.location.href = 'example.html';
+        }
+    </script>
 </body>
 </html>

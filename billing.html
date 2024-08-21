@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing Page</title>
+    <link rel="icon" href="bb10e8a825ede73800be02dccd9391a369653cc6[1].jpg" type="image/png">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+        .billing-info, .ordered-items {
+            margin-bottom: 30px;
+        }
+        .ordered-items ul {
+            list-style: none;
+            padding: 0;
+        }
+        .ordered-items li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+        }
+        .ordered-items li:last-child {
+            border-bottom: none;
+        }
+        .total-price {
+            text-align: right;
+            font-weight: bold;
+            font-size: 1.2em;
+            padding-top: 10px;
+        }
+        .billing-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+        .billing-buttons button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .billing-buttons button:hover {
+            background-color: #0056b3;
+        }
+        .back-button {
+            background-color: #6c757d;
+        }
+        .back-button:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Billing Summary</h2>
+        <div class="billing-info">
+            <p><strong>Date:</strong> <span id="billing-date"></span></p>
+            <p><strong>Customer:</strong> John Doe</p> <!-- This can be dynamic -->
+        </div>
+        <div class="ordered-items">
+            <h3>Ordered Items</h3>
+            <ul id="ordered-items-list">
+                <!-- Ordered items will be inserted here -->
+            </ul>
+            <p class="total-price">Total Price: ₹<span id="total-amount">0.00</span></p>
+        </div>
+        <div class="billing-buttons">
+            <button class="back-button" onclick="window.location.href='menu.html'">Back to Menu</button>
+            <button onclick="completeOrder()">Complete Order</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const orderedItemsList = document.getElementById('ordered-items-list');
+            const totalAmountElement = document.getElementById('total-amount');
+            const billingDateElement = document.getElementById('billing-date');
+
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let totalAmount = 0;
+
+            // Set billing date
+            const today = new Date();
+            const formattedDate = today.toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' });
+            billingDateElement.textContent = formattedDate;
+
+            // Populate ordered items
+            cart.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <span>${item.name} (x${item.quantity})</span>
+                    <span>₹${(item.price * item.quantity).toFixed(2)}</span>
+                `;
+                orderedItemsList.appendChild(listItem);
+                totalAmount += item.price * item.quantity;
+            });
+
+            totalAmountElement.textContent = totalAmount.toFixed(2);
+        });
+
+        function completeOrder() {
+            window.location.href = 'order_page.html';
+        }
+    </script>
+</body>
+</html>

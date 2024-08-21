@@ -234,7 +234,8 @@
                 }
             }
             if (valid) {
-                alert("Your order has been placed!");
+                alert('Thank you for your order!');
+                localStorage.removeItem('cart');
                 document.getElementById("form-groups").reset();
                 window.location.href = "website.html";
             }
