@@ -96,6 +96,39 @@
             box-sizing: border-box;
         }
 
+        .signout-panel h2,
+        .signout-panel h3 {
+            margin-top: 0;
+        }
+
+        .signout-panel button {
+            background-color: #f44336;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .signout-panel button:hover {
+            background-color: #d32f2f;
+        }
+
+        .signout-panel {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 300px;
+            height: 100%;
+            background-color: white;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 1000;
+        }
+
         .signin-panel button {
             width: 100%;
             margin-top: 10px;
@@ -211,7 +244,7 @@
                         </svg>SIGN UP</a><span id="userName"
                         style="display: none; font-weight: 700; font-size: small;"></span>
                 </div>
-                
+
             </div>
         </div>
     </div>
@@ -252,6 +285,25 @@
                 <a href="#" id="switchToSignIn">Already have an account?</a>
             </div>
         </div>
+
+    </div>
+    <div id="signoutPanel" class="signout-panel">
+        <span class="close-btn" id="closeSignOutPanel">&times;</span>
+        <h2>Account Information</h2>
+        <div id="accountInfo">
+            <p><strong>Name:</strong> <span id="accountName"></span></p>
+            <p><strong>Phone Number:</strong> <span id="accountPhone"></span></p>
+        </div>
+        <div id="cartInfo">
+            <h3>Your Cart:</h3>
+            <ul id="cartItems"></ul>
+            <p id="cartTotalPrice">Total Price: ₹0.00</p>
+        </div>
+        <div id="orderInfo">
+            <h3>Your Orders:</h3>
+            <ul id="orderItems"></ul>
+        </div>
+        <button id="signOutButton">Sign Out</button>
     </div>
 
     <div id="demo" class="carousel slide" data-bs-ride="carousel">
@@ -375,13 +427,50 @@
             const createAccountErrorMessage = document.getElementById('createAccountErrorMessage');
             const phonePattern = /^[0-9]{10}$/;
             const userNameElement = document.getElementById('userName');
-            const storedUserName = localStorage.getItem('userName');
-            if (storedUserName) {
-                userNameElement.textContent = storedUserName;
-                userNameElement.style.display = 'inline';
-                toggleSignInButton.style.display = 'none';
+            const signoutPanel = document.getElementById('signoutPanel');
+            const closeSignOutPanelButton = document.getElementById('closeSignOutPanel');
+            const signOutButton = document.getElementById('signOutButton');
+            const accountNameElement = document.getElementById('accountName');
+            const accountPhoneElement = document.getElementById('accountPhone');
+            const cartItemsElement = document.getElementById('cartItems');
+            const cartTotalPriceElement = document.getElementById('cartTotalPrice');
+            const orderItemsElement = document.getElementById('orderItems');
+
+            // Function to get all users from localStorage
+            function getUsers() {
+                return JSON.parse(localStorage.getItem('users')) || [];
             }
 
+            // Function to save all users to localStorage
+            function saveUsers(users) {
+                localStorage.setItem('users', JSON.stringify(users));
+            }
+
+            // Display the user's name and info if logged in
+            const users = getUsers();
+            const loggedInUser = users.find(user => user.isLoggedIn);
+
+            if (loggedInUser) {
+                userNameElement.textContent = loggedInUser.name;
+                userNameElement.style.display = 'inline';
+                toggleSignInButton.style.display = 'none';
+                accountNameElement.textContent = loggedInUser.name;
+                accountPhoneElement.textContent = loggedInUser.phone;
+                loggedInUser.cart.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = `${item.name} - ₹${item.price} x ${item.quantity}`;
+                    cartItemsElement.appendChild(li);
+                });
+                let totalCartPrice = loggedInUser.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                cartTotalPriceElement.textContent = `Total Price: ₹${totalCartPrice}`;
+                loggedInUser.orders.forEach(order => {
+                    const li = document.createElement('li');
+                    li.textContent = `${order.name} - ₹${order.price} x ${order.quantity} (${order.date})`;
+                    orderItemsElement.appendChild(li);
+                });
+            }
+
+            // Sign-In Panel functionality
             toggleSignInButton.addEventListener('click', function () {
                 signinPanel.classList.add('open');
                 signinForm.style.display = 'block';
@@ -404,9 +493,31 @@
                 createAccountForm.style.display = 'none';
             });
 
-            document.addEventListener('click', function (event) {
-                if (!signinPanel.contains(event.target) && !toggleSignInButton.contains(event.target)) {
+            createAccount.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const nameInput = document.getElementById('createAccountName').value;
+                const phoneInput = document.getElementById('createPhoneNumber').value;
+                const phoneValid = phonePattern.test(phoneInput);
+
+                if (phoneValid) {
+                    createAccountErrorMessage.textContent = '';
+                    const users = getUsers();
+                    const newUser = {
+                        name: nameInput,
+                        phone: phoneInput,
+                        isLoggedIn: false,
+                        cart: [],
+                        orders: []
+                    };
+                    users.push(newUser);
+                    saveUsers(users);
+                    userNameElement.textContent = nameInput;
+                    userNameElement.style.display = 'inline';
+                    toggleSignInButton.style.display = 'none';
                     signinPanel.classList.remove('open');
+                    alert('Account Created Successfully!');
+                } else {
+                    createAccountErrorMessage.textContent = 'Please enter a valid 10-digit phone number.';
                 }
             });
 
@@ -414,36 +525,72 @@
                 e.preventDefault();
                 const phoneInput = document.getElementById('signInPhone').value;
                 const phoneValid = phonePattern.test(phoneInput);
+
                 if (phoneValid) {
-                    errorMessage.textContent = '';
-                    // alert('Sign In Successful!');
-                    localStorage.setItem('userName', userName);
-                    userNameElement.textContent = userName;
-                    userNameElement.style.display = 'inline'; // Show the username
-                    toggleSignInButton.style.display = 'none';
-                    signinPanel.classList.remove('open');
+                    const users = getUsers();
+                    const user = users.find(user => user.phone === phoneInput);
+
+                    if (user) {
+                        errorMessage.textContent = '';
+                        // Mark all users as logged out
+                        users.forEach(u => u.isLoggedIn = false);
+                        // Mark this user as logged in
+                        user.isLoggedIn = true;
+                        saveUsers(users);
+                        userNameElement.textContent = user.name;
+                        userNameElement.style.display = 'inline';
+                        toggleSignInButton.style.display = 'none';
+                        signinPanel.classList.remove('open');
+                    } else {
+                        errorMessage.textContent = 'This number is not signed up. Please create an account.';
+                    }
                 } else {
                     errorMessage.textContent = 'Please enter a valid 10-digit phone number.';
                 }
             });
+            function updateSignoutPanel() {
+                const users = getUsers();
+                const loggedInUser = users.find(user => user.isLoggedIn);
 
-            createAccount.addEventListener('submit', function (e) {
-                e.preventDefault();
-                const nameInput = document.getElementById('createAccountName').value;
-                const phoneInput = document.getElementById('createPhoneNumber').value;
-                const phoneValid = phonePattern.test(phoneInput);
-                if (phoneValid) {
-                    createAccountErrorMessage.textContent = '';
-                    localStorage.setItem('userName', nameInput);
-                    userNameElement.textContent = nameInput;
-                    userNameElement.style.display = 'inline';
-                    toggleSignInButton.style.display = 'none';
-                    alert('Account Created Successfully!');
-                    signinPanel.classList.remove('open');
+                if (loggedInUser) {
+                    accountNameElement.textContent = loggedInUser.name;
+                    accountPhoneElement.textContent = loggedInUser.phone;
                 } else {
-                    createAccountErrorMessage.textContent = 'Please enter a valid 10-digit phone number.';
+                    accountNameElement.textContent = '';
+                    accountPhoneElement.textContent = '';
+                }
+            }
+
+            userNameElement.addEventListener('click', function () {
+                updateSignoutPanel();
+                signoutPanel.style.display = 'block';
+            });
+
+            closeSignOutPanelButton.addEventListener('click', function () {
+                signoutPanel.style.display = 'none';
+            });
+
+            signOutButton.addEventListener('click', function () {
+                const users = getUsers();
+                users.forEach(user => {
+                    if (user.isLoggedIn) {
+                        user.isLoggedIn = false;
+                    }
+                });
+                saveUsers(users);
+                userNameElement.style.display = 'none';
+                toggleSignInButton.style.display = 'inline';
+                signoutPanel.style.display = 'none';
+                alert('Signed out successfully.');
+            });
+
+            // Close signout panel when clicking outside of it
+            document.addEventListener('click', function (event) {
+                if (!signoutPanel.contains(event.target) && !userNameElement.contains(event.target)) {
+                    signoutPanel.style.display = 'none';
                 }
             });
+
         });
 
 
