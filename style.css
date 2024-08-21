@@ -24,7 +24,7 @@ body {
 }
 .search a{
     margin-right: 8px;
-    padding: 7px;
+    padding:7px;
     color:black;
 }
 ._1GTCc {
@@ -44,6 +44,7 @@ a{
 }
 .search i:hover{
     color: rgb(237, 35, 248);
+    background-color: rgba(243, 255, 5, 0.812);
     border: 1.5mm ridge rgba(243, 255, 5, 0.812);
 }
 .logon {
