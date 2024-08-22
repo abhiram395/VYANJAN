@@ -118,7 +118,7 @@
             position: fixed;
             right: 0;
             top: 0;
-            width: 300px;
+            width: 450px;
             height: 100%;
             background-color: white;
             box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
@@ -219,29 +219,34 @@
                     </li>
                 </ul>
                 <div class="search">
-                    <lord-icon src="https://cdn.lordicon.com/mpigogwa.json" trigger="morph" stroke="light"
-                        state="morph-circle" colors="primary:#ffffff,secondary:#b4b4b4,tertiary:#3080e8"
-                        style="width:50px;height:50px">
-                    </lord-icon>
-                    <lord-icon src="https://cdn.lordicon.com/ramibnzh.json" trigger="morph" state="morph-circle"
-                        colors="primary:#0a2e5c,secondary:#b4b4b4" style="width:50px;height:50px">
-                    </lord-icon>
-                    <lord-icon src="https://cdn.lordicon.com/frnztegr.json" trigger="morph" stroke="light"
-                        state="morph-circle"
-                        colors="primary:#ffffff,secondary:#b4b4b4,tertiary:#ee6d66,quaternary:#c7166f,quinary:#e86830,senary:#66a1ee"
-                        style="width:50px;height:50px">
-                    </lord-icon>
-                    <lord-icon src="https://cdn.lordicon.com/ollaenhr.json" trigger="morph" stroke="light"
-                        state="morph-cirlce" colors="primary:#ffffff,secondary:#e8e230,tertiary:#b4b4b4"
-                        style="width:50px;height:50px">
-                    </lord-icon>
+                    <a href="" class="icon-link">
+                        <lord-icon src="https://cdn.lordicon.com/mpigogwa.json" trigger="morph" stroke="light"
+                            state="morph-circle" colors="primary:#ffffff,secondary:#b4b4b4,tertiary:#3080e8"
+                            style="width:50px;height:50px">
+                        </lord-icon></a>
+                    <a href="" class="icon-link">
+                        <lord-icon src="https://cdn.lordicon.com/ramibnzh.json" trigger="morph" state="morph-circle"
+                            colors="primary:#0a2e5c,secondary:#b4b4b4" style="width:50px;height:50px">
+                        </lord-icon>
+                    </a>
+                    <a href="https://www.instagram.com/?hl=en" class="icon-link" target="_blank">
+                        <lord-icon src="https://cdn.lordicon.com/frnztegr.json" trigger="morph" stroke="light"
+                            state="morph-circle"
+                            colors="primary:#ffffff,secondary:#b4b4b4,tertiary:#ee6d66,quaternary:#c7166f,quinary:#e86830,senary:#66a1ee"
+                            style="width:50px;height:50px">
+                        </lord-icon></a>
+                    <a href="" class="icon-link">
+                        <lord-icon src="https://cdn.lordicon.com/ollaenhr.json" trigger="morph" stroke="light"
+                            state="morph-cirlce" colors="primary:#ffffff,secondary:#e8e230,tertiary:#b4b4b4"
+                            style="width:50px;height:50px">
+                        </lord-icon></a>
                     <a href="#"
                         style="font-weight: 700; font-size: small; cursor: pointer; text-decoration: none;border-radius: 30px; "
                         id="toggleSignIn"><svg class="_1GTCc" viewBox="6 0 12 24" height="19" width="18" fill="#686b78">
                             <path
                                 d="M11.9923172,11.2463768 C8.81761115,11.2463768 6.24400341,8.72878961 6.24400341,5.62318841 C6.24400341,2.5175872 8.81761115,0 11.9923172,0 C15.1670232,0 17.740631,2.5175872 17.740631,5.62318841 C17.740631,8.72878961 15.1670232,11.2463768 11.9923172,11.2463768 Z M11.9923172,9.27536232 C14.0542397,9.27536232 15.7257581,7.64022836 15.7257581,5.62318841 C15.7257581,3.60614845 14.0542397,1.97101449 11.9923172,1.97101449 C9.93039471,1.97101449 8.25887628,3.60614845 8.25887628,5.62318841 C8.25887628,7.64022836 9.93039471,9.27536232 11.9923172,9.27536232 Z M24,24 L0,24 L1.21786143,19.7101449 L2.38352552,15.6939891 C2.85911209,14.0398226 4.59284263,12.7536232 6.3530098,12.7536232 L17.6316246,12.7536232 C19.3874139,12.7536232 21.1256928,14.0404157 21.6011089,15.6939891 L22.9903494,20.5259906 C23.0204168,20.63057 23.0450458,20.7352884 23.0641579,20.8398867 L24,24 Z M21.1127477,21.3339312 L21.0851024,21.2122487 C21.0772161,21.1630075 21.0658093,21.1120821 21.0507301,21.0596341 L19.6614896,16.2276325 C19.4305871,15.4245164 18.4851476,14.7246377 17.6316246,14.7246377 L6.3530098,14.7246377 C5.4959645,14.7246377 4.55444948,15.4231177 4.32314478,16.2276325 L2.75521062,21.6811594 L2.65068631,22.0289855 L21.3185825,22.0289855 L21.1127477,21.3339312 Z">
                             </path>
-                        </svg>SIGN UP</a><span id="userName"
+                        </svg>LOG IN/SIGN UP</a><span id="userName"
                         style="display: none; font-weight: 700; font-size: small;"></span>
                 </div>
 
@@ -290,14 +295,11 @@
     <div id="signoutPanel" class="signout-panel">
         <span class="close-btn" id="closeSignOutPanel">&times;</span>
         <h2>Account Information</h2>
-        <div id="accountInfo">
-            <p><strong>Name:</strong> <span id="accountName"></span></p>
-            <p><strong>Phone Number:</strong> <span id="accountPhone"></span></p>
-        </div>
+
         <div id="cartInfo">
             <h3>Your Cart:</h3>
             <ul id="cartItems"></ul>
-            
+
         </div>
         <div id="orderInfo">
             <h3>Your Orders:</h3>
@@ -413,6 +415,7 @@
             </div>
         </section>
     </div>
+    <button id="backToTop" title="Go to top">Top</button>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const toggleSignInButton = document.getElementById('toggleSignIn');
@@ -431,11 +434,28 @@
             const signoutPanel = document.getElementById('signoutPanel');
             const closeSignOutPanelButton = document.getElementById('closeSignOutPanel');
             const signOutButton = document.getElementById('signOutButton');
-            const accountNameElement = document.getElementById('accountName');
-            const accountPhoneElement = document.getElementById('accountPhone');
+            // const accountNameElement = document.getElementById('accountName');
+            // const accountPhoneElement = document.getElementById('accountPhone');
             const cartItemsElement = document.getElementById('cartItems');
             const cartTotalPriceElement = document.getElementById('cartTotalPrice');
             const orderItemsElement = document.getElementById('orderItems');
+            const backToTopButton = document.getElementById('backToTop');
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 300) { // Show button after scrolling down 300px
+                    backToTopButton.style.display = 'block';
+                } else {
+                    backToTopButton.style.display = 'none';
+                }
+            });
+
+            // Scroll to top when the button is clicked
+            backToTopButton.addEventListener('click', function () {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth' // Smooth scroll effect
+                });
+            });
+        
 
             // Function to get all users from localStorage
             function getUsers() {
@@ -448,28 +468,40 @@
             }
 
             // Display the user's name and info if logged in
-            const users = getUsers();
-            const loggedInUser = users.find(user => user.isLoggedIn);
+            function displayUserInfo() {
+                const users = getUsers();
+                const loggedInUser = users.find(user => user.isLoggedIn);
 
-            if (loggedInUser) {
-                userNameElement.textContent = loggedInUser.name;
-                userNameElement.style.display = 'inline';
-                toggleSignInButton.style.display = 'none';
-                accountNameElement.textContent = loggedInUser.name;
-                accountPhoneElement.textContent = loggedInUser.phone;
-                loggedInUser.cart.forEach(item => {
-                    const li = document.createElement('li');
-                    li.textContent = `${item.name} - ₹${item.price} x ${item.quantity}`;
-                    cartItemsElement.appendChild(li);
-                });
-                let totalCartPrice = loggedInUser.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-                cartTotalPriceElement.textContent = `Total Price: ₹${totalCartPrice}`;
-                loggedInUser.orders.forEach(order => {
-                    const li = document.createElement('li');
-                    li.textContent = `${order.name} - ₹${order.price} x ${order.quantity} (${order.date})`;
-                    orderItemsElement.appendChild(li);
-                });
+                if (loggedInUser) {
+                    userNameElement.textContent = loggedInUser.name;
+                    userNameElement.style.display = 'inline';
+                    toggleSignInButton.style.display = 'none';
+                    // accountNameElement.textContent = loggedInUser.name;
+                    // accountPhoneElement.textContent = loggedInUser.phone;
+
+                    // Display cart items
+                    cartItemsElement.innerHTML = ''; // Clear previous items
+                    loggedInUser.cart.forEach(item => {
+                        const li = document.createElement('li');
+                        li.textContent = `${item.name} - ₹${item.price} x ${item.quantity}`;
+                        cartItemsElement.appendChild(li);
+                    });
+
+                    // Calculate and display total cart price
+                    const totalCartPrice = loggedInUser.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                    cartTotalPriceElement.textContent = `Total Price: ₹${totalCartPrice}`;
+
+                    // Display order items
+                    orderItemsElement.innerHTML = ''; // Clear previous items
+                    loggedInUser.orders.forEach(order => {
+                        const li = document.createElement('li');
+                        li.textContent = `${order.name} - ₹${order.price} x ${order.quantity} (${order.date})`;
+                        orderItemsElement.appendChild(li);
+                    });
+                }
             }
+
+            displayUserInfo();
 
             // Sign-In Panel functionality
             toggleSignInButton.addEventListener('click', function () {
@@ -503,20 +535,35 @@
                 if (phoneValid) {
                     createAccountErrorMessage.textContent = '';
                     const users = getUsers();
-                    const newUser = {
-                        name: nameInput,
-                        phone: phoneInput,
-                        isLoggedIn: false,
-                        cart: [],
-                        orders: []
-                    };
-                    users.push(newUser);
-                    saveUsers(users);
-                    userNameElement.textContent = nameInput;
-                    userNameElement.style.display = 'inline';
-                    toggleSignInButton.style.display = 'none';
-                    signinPanel.classList.remove('open');
-                    alert('Account Created Successfully!');
+                    const existingUser = users.find(user => user.phone === phoneInput);
+
+                    if (existingUser) {
+                        // Alert if phone number already exists
+                        alert('An account with this phone number already exists. Please use a different number.');
+                    } else {
+                        const newUser = {
+                            name: nameInput,
+                            phone: phoneInput,
+                            isLoggedIn: false,
+                            cart: [],
+                            orders: []
+                        };
+                        users.push(newUser);
+                        saveUsers(users);
+
+                        // Log and update UI immediately after account creation
+                        console.log('New user created:', newUser);
+                        userNameElement.textContent = nameInput;
+                        userNameElement.style.display = 'inline';
+                        toggleSignInButton.style.display = 'none';
+                        signinPanel.classList.remove('open');
+                        createAccountForm.reset(); // Reset form fields
+
+                        // Update signout panel with the newly created user's information
+                        updateSignoutPanel();
+
+                        alert('Account Created Successfully!');
+                    }
                 } else {
                     createAccountErrorMessage.textContent = 'Please enter a valid 10-digit phone number.';
                 }
@@ -542,6 +589,7 @@
                         userNameElement.style.display = 'inline';
                         toggleSignInButton.style.display = 'none';
                         signinPanel.classList.remove('open');
+                        displayUserInfo();
                     } else {
                         errorMessage.textContent = 'This number is not signed up. Please create an account.';
                     }
@@ -549,17 +597,19 @@
                     errorMessage.textContent = 'Please enter a valid 10-digit phone number.';
                 }
             });
+
+            // Sign-out functionality
             function updateSignoutPanel() {
                 const users = getUsers();
                 const loggedInUser = users.find(user => user.isLoggedIn);
 
-                if (loggedInUser) {
-                    accountNameElement.textContent = loggedInUser.name;
-                    accountPhoneElement.textContent = loggedInUser.phone;
-                } else {
-                    accountNameElement.textContent = '';
-                    accountPhoneElement.textContent = '';
-                }
+                // if (loggedInUser) {
+                //     accountNameElement.textContent = loggedInUser.name;
+                //     accountPhoneElement.textContent = loggedInUser.phone;
+                // } else {
+                //     accountNameElement.textContent = '';
+                //     accountPhoneElement.textContent = '';
+                // }
             }
 
             userNameElement.addEventListener('click', function () {
@@ -591,10 +641,7 @@
                     signoutPanel.style.display = 'none';
                 }
             });
-
         });
-
-
 
         document.getElementById('ordering').addEventListener('click', function () {
             document.getElementById('reviews').scrollIntoView({ behavior: 'smooth' });

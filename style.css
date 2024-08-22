@@ -18,12 +18,19 @@ body {
     position: absolute;
     right: 1px;
 }
-.search lord-icon{
-    margin: auto;
+.search .icon-link {
+    padding: 0; 
+    margin: auto; 
+}
+.search .icon-link {
+    display: inline-block;
+    text-decoration: none; 
+}
+.search .icon-link lord-icon {
+    margin: auto; 
     top: 0;
-    border: 0px;
     position: relative;
-    padding: 5px;
+    padding: 7px;
 }
 .search a{
     margin-right: 8px;
@@ -41,8 +48,9 @@ a{
     font-style: italic;
 }
 
-.search a:hover{
+.search a:last-of-type:hover {
     color: rgb(237, 35, 248);
+    background-color: rgb(242, 255, 0);
     border: 1.5mm ridge rgba(243, 255, 5, 0.812);
 }
 
@@ -180,7 +188,7 @@ i.icon {
     padding-bottom: 20px;
 }
 a:hover{
-    background-color: rgb(242, 255, 0);
+    /* background-color: rgb(242, 255, 0); */
     border-radius: 4px;
 }
 .cat {
@@ -201,6 +209,24 @@ a:hover{
     text-align: justify;
     margin-left: 130px;
     margin-top: -130px;
+}
+#backToTop {
+    position: fixed;
+    bottom: 60px;
+    right: 90px;
+    display: none; /* Hide the button initially */
+    background-color:   #12a21ebc;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 15px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    z-index: 1000; /* Ensure it is on top of other content */
+}
+
+#backToTop:hover {
+    background-color: #a707ebf9;
 }
 .newz{
     width: 250px;
