@@ -36,6 +36,10 @@ body {
     margin-right: 8px;
     padding:7px;
     color:black;
+    
+}
+.search a:last-of-type{
+    transition: background-color 0.4s,color 0.4s,border 0.4s;
 }
 ._1GTCc {
     position: relative;
@@ -119,8 +123,8 @@ a{
     position: relative; 
 }
 .slider-image{
-    border-radius: 20px;
-    max-width: 90%; 
+    /* border-radius: 20px; */
+    max-width: 85%; 
     border: none; 
     height: auto; 
     max-height: 610px; 
@@ -131,7 +135,7 @@ a{
 }
 #demo {
     margin-top: 63px;
-    background-color: rgb(10, 191, 215);
+    background-color: #28dcd0ee;
 }
 .edit {
     color: rgb(6, 53, 9);
