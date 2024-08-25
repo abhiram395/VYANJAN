@@ -73,10 +73,13 @@ a{
 .nav-item {
     font-size: large;
     font-weight: bold;
-    margin-left: 50px;
+    margin-left: 25px;
     color: black;
     letter-spacing: 3px;
+    transition: background-color 0.15s;
 }
+
+
 .text {
     position: absolute;
     top: 70px;
@@ -126,13 +129,17 @@ a{
     max-width: 85%; 
     border: none; 
     object-fit: cover;
-    opacity: 0.8;
+    opacity: 0.85;
     display: block;
     margin: auto;
 }
+.nav-item  img{
+    width: 30px;
+}
+
 #demo {
     margin-top: 63px;
-    background-color: #28dcd0ee;
+    background-color: #5efff4ee;
 }
 .edit {
     color: rgb(6, 53, 9);
@@ -153,9 +160,9 @@ a{
     position: absolute;
 }
 .nav-item:hover {
-    background-color: #fddd3d;
+    background-color: rgb(242, 255, 0);
     border-radius: 5px;
-    transition: background-color 0.15s;
+    
 }
 p.descriptionN{
     padding: 10px 30px;
