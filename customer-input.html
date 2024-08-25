@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Input</title>
+</head>
+<body>
+    <h2>Enter Your Name</h2>
+    <form id="name-form">
+        <label for="customer-name">Name:</label>
+        <input type="text" id="customer-name" required>
+        <button type="submit">Save</button>
+    </form>
+
+    <script>
+        document.getElementById('name-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting normally
+
+            var customerName = document.getElementById('customer-name').value;
+            localStorage.setItem('customerName', customerName); // Save name to local storage
+
+            window.location.href = 'customer-output.html'; // Redirect to billing summary page
+        });
+    </script>
+</body>
+</html>

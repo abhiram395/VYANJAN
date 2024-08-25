@@ -81,7 +81,7 @@ a{
     left: 150px;
     color: rgb(247, 23, 23);
     font-size: 70px;
-    background-color: rgba(239, 233, 233, 0.859);
+    background-color: rgb(255, 255, 255);
     padding: 20px;
     border-radius: 50px;
     word-spacing: 5px;
@@ -92,13 +92,14 @@ a{
     top: 230px;
     font-weight: 800;
     left: 160px;
-    color: rgb(255, 225, 0);
+    color: black;
     font-size: 30px;
     padding: 7px;
     border-radius: 50px;
     background-blend-mode: hard-light;
     word-spacing: 5px;
-    background-color: rgb(139, 123, 123);
+    letter-spacing: 1px;
+    background-color: white;
     z-index: 10;
 }
 #carousel-caption {
@@ -130,7 +131,7 @@ a{
 }
 #demo {
     margin-top: 63px;
-    background-color: rgba(255, 255, 0, 0.78);
+    background-color: rgb(10, 191, 215);
 }
 .edit {
     color: rgb(6, 53, 9);

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing Summary</title>
+    <style>
+        /* Add your CSS styles here */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Billing Summary</h2>
+        <div class="billing-info">
+            <p><strong>Date:</strong> <span id="billing-date"></span></p>
+            <p><strong>Customer:</strong> <span id="customer-name">John Doe</span></p>
+        </div>
+        <div class="ordered-items">
+            <h3>Ordered Items</h3>
+            <ul id="ordered-items-list">
+                <!-- Ordered items will be inserted here -->
+            </ul>
+            <p class="total-price">Total Price: ₹<span id="total-amount">0.00</span></p>
+        </div>
+        <div class="billing-buttons">
+            <button class="back-button" onclick="window.location.href='menu.html'">Back to Menu</button>
+            <button onclick="completeOrder()">Complete Order</button>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('load', function() {
+            var customerName = localStorage.getItem('customerName');
+            if (customerName) {
+                document.getElementById('customer-name').textContent = customerName;
+            }
+        });
+    </script>
+</body>
+</html>
