@@ -15,10 +15,10 @@
 
     <script>
         document.getElementById('name-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent form from submitting normally
+            event.preventDefault(); 
 
             var customerName = document.getElementById('customer-name').value;
-            localStorage.setItem('customerName', customerName); // Save name to local storage
+            localStorage.setItem('customerName', customerName); 
 
             window.location.href = 'customer-output.html'; 
         });
