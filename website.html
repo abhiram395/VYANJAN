@@ -278,7 +278,7 @@
         </div>
         <div id="createAccountForm" style="display: none;">
             <h1>Create Account</h1>
-            <form id="createAccount">
+            <form id="createAccount" method="post" action="index.php">
                 <div class="input-group">
                     <label for="createAccountName">Name:</label>
                     <input type="text" id="createAccountName" name="Name" placeholder="Enter your name" required>
@@ -424,6 +424,7 @@
     <button id="backToTop" title="Go to top">Top</button>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+        
             const toggleSignInButton = document.getElementById('toggleSignIn');
             const signinPanel = document.getElementById('signinPanel');
             const closePanelButton = document.getElementById('closePanel');

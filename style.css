@@ -73,7 +73,7 @@ a{
 .nav-item {
     font-size: large;
     font-weight: bold;
-    margin-left: 25px;
+    margin: 0px 15px;
     color: black;
     letter-spacing: 3px;
     transition: background-color 0.15s;
@@ -138,7 +138,7 @@ a{
 }
 
 #demo {
-    margin-top: 63px;
+    margin-top: 58px;
     background-color: #5efff4ee;
 }
 .edit {
